@@ -7,7 +7,8 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 class Level(commands.Cog):
     def __init__(self, bot):
-        self.bt = obot
+        self.bot = bot
+
 
     # =================================================================
     # 📡 1. CẤU HÌNH CƠ BẢN & KẾT NỐI POSTGRESQL
@@ -25,7 +26,8 @@ class Level(commands.Cog):
     intents.members = True
     intents.voice_states = True
 
-    bot = commands.Bot(command_prefix=PREFIX, intents=intents)
+    
+
 
     def get_db_connection():
         """Tạo kết nối tới cơ sở dữ liệu PostgreSQL trên Railway"""
@@ -554,5 +556,5 @@ class Level(commands.Cog):
             await ctx.send("❌ Bạn không có quyền `Administrator` để thực hiện cấu hình này!")
 
 
-async def level(bot):
+async def setup(bot):
     await bot.add_cog(Level(bot))
